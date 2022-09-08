@@ -8,70 +8,48 @@
            <table class="table table-borderless">
             <thead class="thead-light">
               <tr>
-                <th>Name</th>
+                <th>Tutors's Name</th>
                 <th>Course</th>
                 <th>Semester</th>
-                <th>date</th>
-                <th>level</th>
-                <th>venue</th>
-                <th>time</th>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Level</th>
+                <th>Venue</th>
+                <th>Time</th>
               </tr>
             </thead>
             <tbody class="p-2">
-              <tr class="card-header mb-2">
-                <td>Doe</td>
+              <tr class="card-header mb-2" v-for="data in tables" :key="data._id">
+                <td>{{data.nameoflect}}</td>
                 <td>
-                  <div class="d-flex">
-                    E.E.D <br>
-                    Entrepreneurship
+                   <div class="d-flex">
+                    {{data.course}} <br>
+                    {{data.course_code}}
                   </div>
                 </td>
                 <td>
-                  Seconde Semester
+                   {{data.semester}}
                 </td>
                 <td>
-                  Tuesday
+                  {{data.date}}
+                </td>
+                <td>{{new Date(data.date).toLocaleString('en-us', {weekday: 'short'})}}</td>
+                <td>
+                  {{data.level}}
                 </td>
                 <td>
-                  300
+                  {{data.venue}}
                 </td>
                 <td>
-                  200 cap
-                </td>
-                <td>
-                  10:30am-12:30
+                  {{data.start_time}} - {{data.end_time}}
                 </td>
                 
               </tr>
-              <tr class="card-header mb-2">
-                <td>Doe</td>
-                <td>
-                  <div class="d-flex">
-                    E.E.D <br>
-                    Entrepreneurship
-                  </div>
-                </td>
-                <td>
-                  Seconde Semester
-                </td>
-                <td>
-                  Tuesday
-                </td>
-                <td>
-                  300
-                </td>
-                <td>
-                  200 cap
-                </td>
-                <td>
-                  10:30am-12:30
-                </td>
-                
-              </tr>
+             
             </tbody>
           </table>
         </div>
-     <button class="btn btn-primary shadow" @click="generate_Time">Print Time Table</button>
+     <button class="btn btn-primary shadow d-print-none" @click="generate_Time">Print Time Table</button>
       </div>
     </div>
    </div>
@@ -80,8 +58,27 @@
 <script>
 export default {
     data:()=>({
+        tables:[]
+    }),
 
-    })
+    methods:{
+        getTables(){
+          let get_timetable = JSON.parse(localStorage.getItem('save_tables'))
+          this.tables = get_timetable
+          console.log(this.tables)
+        },
+        generate_Time(){
+          window.print()
+        }
+    },
+
+    created(){
+      this.getTables();
+    },
+
+    mounted(){
+      this.getTables();
+    }
 }
 </script>
 

@@ -1,5 +1,8 @@
 <template>
 <!-- nav -->
+<div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
     <div class="container-fluid px-4 px-lg-5">
         <a class="navbar-brand" href="index.html"></a>
@@ -33,8 +36,10 @@
                 <!-- card -->
                 <div class="card">
                     <div class="card-body">
-                    <div class="card-title">Register Time Table here</div>
+                    <div class="card-title ">Register Time Table here</div>
                         <!--accordion  -->
+                        <div class="card-text text-danger" v-if="errmsg">{{this.errmsg}}</div>
+                        <div class="card-text text-success" v-if="msg">{{msg}}</div>
                         <div class="accordion shadow-sm" id="accordionExample">
                             <div class="card border-1">
                                 <div class="card-header" id="headingOne">
@@ -111,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button @click="regiterTimeTabsle" class="btn btn-primary mt-2 px-5 py-2 shadow-sm">Register</button>
+                        <button @click="regiterTimeTabsle" class="btn btn-primary mt-2 px-5 py-2 shadow-sm"> <i  v-show="spin" class="fa fa-spin fa-spinner"></i> Register</button>
                         <!--col md8  -->
 
                     </div>
@@ -122,6 +127,7 @@
 
         </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -141,24 +147,41 @@ export default {
                 end_time:"",
                 venue:"",
                 date:"",
-            }
+            },
+            errmsg:"",
+            msg:"",
+            spin:false
         }
     },
     methods:{
         //time table function
         regiterTimeTabsle(){
+            this.spin = true
             for(let value in this.time_table){
                 if (this.time_table[value] == "") {
-                    console.log(`${value} is empty`)
-                }else{
-                    console.log("niceone")
-                      axios.get('http://localhost:5000/home').then(res => {
-                        console.log(res.data)
-                    })
+                    this.errmsg = `${value} input is empty`;
+                    setTimeout(() => {
+                        this.errmsg = ""
+                    }, 6000);
+                    return;
                 }
-               
             }
-          
+            //saving to database...
+            axios.post('addtimetable', this.time_table).then(res => {
+                    console.log(res)
+                if (res.status !== 200) {
+                    this.msg = 'loading.......'
+                }else{
+                    this.spin = true
+                    setTimeout(() => {
+                       this.spin = false
+                    }, 5000);
+                    this.msg = res.data.message
+                }
+            }).catch(err => {
+                throw err
+            })
+            return
         }
         // 
     }

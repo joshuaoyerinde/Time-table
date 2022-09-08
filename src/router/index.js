@@ -3,16 +3,17 @@ import Time from '../components/Time.vue'
 import Register from '../components/Register.vue'
 import Table from '../components/Table.vue'
 const routes = [
+
+  {
+    path:'/',
+    name:'timetable',
+    component:Register
+  
+  },
   {
     path: '/time',
     name: 'Home',
     component: Time
-  },
-  {
-    path:'/time-table',
-    name:'timetable',
-    component:Register
-
   },
   {
     path:'/table-sheet',
