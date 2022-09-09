@@ -109,7 +109,6 @@ export default {
   computed:{
       _getTables(){
         let filtering = new RegExp(this.input, 'i');
-       
         return this.time_table.filter(each => each.level.match(filtering) || each.course.match(filtering)); 
       }
   },
