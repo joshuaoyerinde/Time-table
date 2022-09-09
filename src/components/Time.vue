@@ -79,7 +79,7 @@
                   {{table.start_time}} - {{table.end_time}}
                 </td>
                 <td>
-                  <button class="btn btn-primary"> <i class="fa fa-edit"></i></button>
+                  <!-- <button class="btn btn-primary"> <i class="fa fa-edit"></i></button> -->
                   <button class="btn btn-danger ml-2" @click="_delete(table._id)"> <i class="fa fa-trash"></i></button>
                 </td>
               </tr>
@@ -109,7 +109,10 @@ export default {
   computed:{
       _getTables(){
         let filtering = new RegExp(this.input, 'i');
-        return this.time_table.filter(each => each.level.match(filtering) || each.course.match(filtering)); 
+       
+          return this.time_table.filter(each => each.level.match(filtering) || each.course.match(filtering)); 
+            // return false
+         
       }
   },
   methods:{

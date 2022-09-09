@@ -45,7 +45,7 @@
                                 <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="float-right"><i class='fas fa-plus-circle' style='font-size:20px'></i> </span>
+                                    <span class="float-right"><i class='fa fa-plus-circle' style='font-size:20px'></i> </span>
                                        Add Course And the Lecturer In charge
                                     </button>
                                 </h2>
@@ -67,7 +67,7 @@
                                 <div class="card-header" id="headingTwo">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                     <span class="float-right"><i class='fas fa-plus-circle' style='font-size:20px'></i> </span>
+                                     <span class="float-right"><i class='fa fa-plus-circle' style='font-size:20px'></i> </span>
                                         Add the Department, Course code and the Level
                                     </button>
                                 </h2>
@@ -87,7 +87,7 @@
                                 <div class="card-header" id="headingThree">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                     <span class="float-right"><i class='fas fa-plus-circle' style='font-size:20px'></i> </span>
+                                     <span class="float-right"><i class='fa fa-plus-circle' style='font-size:20px'></i> </span>
                                         Add Time And Vunue
                                     </button>
                                 </h2>
