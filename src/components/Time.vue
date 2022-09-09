@@ -86,7 +86,7 @@
             </tbody>
           </table>
         </div>
-     <button class="btn btn-primary shadow" @click="generate_Time">Generate Time Table</button>
+     <button class="btn btn-primary shadow" @click="generate_Time" :disabled="isDisabled">Generate Time Table</button>
       </div>
     </div>
   </div>
@@ -103,7 +103,8 @@ export default {
       table:'',
       timeArray : [],
       input:'',
-      message:''
+      message:'',
+      isDisabled: true
   }),
 
   computed:{
@@ -127,6 +128,7 @@ export default {
     },
     checkTable(data){
       this.timeArray.push(data)
+      this.isDisabled = false
       // console.log(this.timeArray)
     },
     _delete(id){
